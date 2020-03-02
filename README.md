@@ -1,5 +1,4 @@
 # Coursera-Search
- ------------
 
  **Overview**
  ----
@@ -7,7 +6,7 @@
 
 **Description**
  ----
- This app allows user to enter query. Then it will import data from the SQLite database, perform TF-IDF algorithm on the dataset, and return the result matched with the query. 
+ This app allows user to enter query and preview the full list of courses. It will then import data from the SQLite database, calculate TF-IDF weighting scheme on the dataset, and return the result matched with the query. 
 
  **Workflow**
  ----
