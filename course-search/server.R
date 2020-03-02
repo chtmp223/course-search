@@ -78,7 +78,7 @@ server <- (function(input, output, session){
   # Return the finished table ----
   render_result <- function(table_result){
     if (is.na(table_result)){
-      table_result <- data.frame(Message = "Enter another keyword")
+      table_result <- data.frame(Message = "Enter another keyword. For example: fundamentals")
     }
     else{
       table_result <- table_result[1:input$num,]

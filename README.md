@@ -23,5 +23,5 @@
  1. This app only allows the user to enter one keyword 
  2. This app will run slowly on larger dataset -> develop another app with Python and Django framework. 
  3. This app only allows the user to search for titles -> include the course description, course link in the SQLite database. 
- 4. This app only doesn't autocomplete queries
+ 4. This app is not mobile-friendly -> add css to the app 
 

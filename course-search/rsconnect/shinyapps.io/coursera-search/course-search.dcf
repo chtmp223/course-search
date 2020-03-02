@@ -5,8 +5,8 @@ account: coursera-search
 server: shinyapps.io
 hostUrl: https://api.shinyapps.io/v1
 appId: 1886364
-bundleId: 2842458
+bundleId: 2842481
 url: https://coursera-search.shinyapps.io/course-search/
-when: 1583111678.35937
+when: 1583112675.65677
 asMultiple: FALSE
 asStatic: FALSE
