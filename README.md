@@ -6,7 +6,8 @@
 
 **Description**
  ----
- This app allows user to enter query and preview the full list of courses. It will then import data from the SQLite database, calculate TF-IDF weighting scheme on the dataset, and return the result matched with the query. 
+- Used Scrapy to scrape courses data (course_getter) from https://www.coursera.org/courses/ and stored the result in a SQLite database (coursera.db)
+- Built an RShiny web app (stored in folder course-search) to get the user's query and return ranked results (using TF-IDF weighting scheme on the database). 
 
  **Workflow**
  ----
@@ -23,4 +24,3 @@
  2. This app will run slowly on larger dataset -> develop another app with Python and Django framework. 
  3. This app only allows the user to search for titles -> include the course description, course link in the SQLite database. 
  4. This app is not mobile-friendly -> add css to the app 
-
