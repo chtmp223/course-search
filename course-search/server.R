@@ -4,7 +4,7 @@
 #--------------------------------------------
 server <- (function(input, output, session){
   
-  # Switch to tab "Result" when button is clicked
+  # Switch to tab "Result" when button is clicked ----
   observeEvent(input$queried,{
     updateTabsetPanel(session, "tabset",
                       selected = "result")

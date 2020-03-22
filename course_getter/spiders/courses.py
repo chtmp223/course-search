@@ -7,7 +7,6 @@ from ..items import CourseGetterItem
 class CoursesSpider(scrapy.Spider):
     name = 'courses'
 
-
     def start_requests(self):
         '''
         start crawling "https://www.coursera.org/courses"

@@ -1,4 +1,13 @@
+# !/usr/bin/python
 # -*- coding: utf-8 -*-
+
+"""
+Created on 2020-03-22
+Class: Scrapy Settings
+Comment:
+Scrapy settings for course_getter project
+@author: Chau Pham
+"""
 
 # Scrapy settings for course_getter project
 #
