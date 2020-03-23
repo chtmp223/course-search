@@ -12,11 +12,18 @@ from ..items import CourseGetterItem
 
 
 class CoursesSpider(scrapy.Spider):
+    '''
+    Initiate requests
+    Specify fields to be scraped and stored to item model
+    '''
     name = 'courses'
 
     def __init__(self, address='', *args, **kwargs):
         '''
-        start crawl requests to "https://www.coursera.org/courses"
+        Start crawl requests to "https://www.coursera.org/courses"
+        Args: 
+            self: instance of the class
+            address: custom url, specified in command line arg
         '''
         # process the entered url
         if address == '':
@@ -29,7 +36,10 @@ class CoursesSpider(scrapy.Spider):
 
     def parse(self, response):
         '''
-        write reponse to item model 
+        Write reponse to item model 
+        Args: 
+            self: instance of the class
+            response: response object obtained from the request
         '''
         items = CourseGetterItem()
 

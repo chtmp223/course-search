@@ -1,0 +1,17 @@
+Title: Coursera Search 
+Author: Chau Pham 
+AuthorUrl: https://chtmp223.github.io/
+License: MIT
+DisplayMode: Normal
+Tags: coursera
+Type: Shiny
+Imports: 
+  shiny, 
+  shinythemes,
+  shinyjs,
+  RSQLite,
+  DBI,
+  dplyr,
+  tidytext,
+  tm,
+  shinyBS

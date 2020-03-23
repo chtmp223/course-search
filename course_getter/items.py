@@ -10,7 +10,10 @@ import scrapy
 
 class CourseGetterItem(scrapy.Item):
     '''
-    define the fields for items - change when page layout changes 
+    Define the fields for items - change when page layout changes
+
+    Args: 
+        Item model of the project 
     '''
     title = scrapy.Field()
     partner = scrapy.Field()

@@ -11,10 +11,20 @@ from scrapy.exceptions import NotConfigured
 
 
 class CourseGetterPipeline(object):
+    '''
+    Create a table in the given SQLite db file 
+    Store data in the table
+    '''
 
     def __init__(self, db):
         '''
-        initialize connection and database table
+        Initialize connection and database table
+
+        Args: 
+            self: instance of the class 
+
+        Returns: 
+            None
         '''
         self.db_name = db
         self.create_connection()
@@ -24,7 +34,7 @@ class CourseGetterPipeline(object):
     @classmethod
     def from_crawler(cls, crawler):
         '''
-        get name for SQLite db
+        Retrieve name for SQLite db from settings.py
         '''
         db_settings = crawler.settings.getdict("DB_SETTINGS")
         if not db_settings:
@@ -34,7 +44,10 @@ class CourseGetterPipeline(object):
 
     def create_connection(self): 
         '''
-        establish connection to the database
+        Establish connection to the database
+
+        Args: 
+            self: Instance of the class
         '''
         self.conn = sqlite3.connect(self.db_name)
         self.curr = self.conn.cursor()
@@ -42,7 +55,10 @@ class CourseGetterPipeline(object):
 
     def create_table(self): 
         '''
-        create and drop the table when appropriate
+        Create a new table/drop the table when appropriate
+
+        Args: 
+            self: Instance of the class
         '''
         self.curr.execute('''DROP TABLE IF EXISTS COURSES''')
         # change the field names when the Coursera page layout changes 
@@ -59,7 +75,11 @@ class CourseGetterPipeline(object):
 
     def store_db(self, item):
         '''
-        insert courses into the database
+        Insert courses into the database
+
+        Args: 
+            self: Instance of the class
+            item: Item model 
         '''
         # change the field names when the page layout changes 
         for i in range(min([len(item['title']),len(item['partner']), len(item['rating']), len(item['count']), len(item['enrollment']), len(item['level'])])): 
@@ -77,7 +97,15 @@ class CourseGetterPipeline(object):
 
     def process_item(self, item, spider):
         '''
-        store and return item 
+        Store item model in the database table
+
+        Args: 
+            self: Instance of the class
+            item: Item model
+            spider: the spider of the project
+
+        Returns: 
+            item: Item model 
         '''
         self.store_db(item)
         return item
