@@ -7,25 +7,36 @@
 # Documentation: https://docs.scrapy.org/en/latest/topics/item-pipeline.html
 
 import sqlite3
+from scrapy.exceptions import NotConfigured
 
-# specify the file name to store database table 
-DB_NAME = "coursera.db"
 
 class CourseGetterPipeline(object):
 
-    def __init__(self):
+    def __init__(self, db):
         '''
         initialize connection and database table
         '''
+        self.db_name = db
         self.create_connection()
         self.create_table()
     
+
+    @classmethod
+    def from_crawler(cls, crawler):
+        '''
+        get name for SQLite db
+        '''
+        db_settings = crawler.settings.getdict("DB_SETTINGS")
+        if not db_settings:
+            raise NotConfigured
+        return cls(db_settings['db'])
+
 
     def create_connection(self): 
         '''
         establish connection to the database
         '''
-        self.conn = sqlite3.connect(DB_NAME)
+        self.conn = sqlite3.connect(self.db_name)
         self.curr = self.conn.cursor()
 
 
@@ -33,9 +44,9 @@ class CourseGetterPipeline(object):
         '''
         create and drop the table when appropriate
         '''
-        self.curr.execute('''DROP TABLE IF EXISTS DB_NAME''')
+        self.curr.execute('''DROP TABLE IF EXISTS COURSES''')
         # change the field names when the Coursera page layout changes 
-        self.curr.execute('''CREATE TABLE IF NOT EXISTS DB_NAME (
+        self.curr.execute('''CREATE TABLE IF NOT EXISTS COURSES(
                 id integer PRIMARY KEY AUTOINCREMENT,
                 title text,
                 partner text,
@@ -43,7 +54,7 @@ class CourseGetterPipeline(object):
                 rating_count text,
                 enrollment text,
                 level text
-            )''')
+            )''' .format(self.db_name))
 
 
     def store_db(self, item):
@@ -52,7 +63,7 @@ class CourseGetterPipeline(object):
         '''
         # change the field names when the page layout changes 
         for i in range(min([len(item['title']),len(item['partner']), len(item['rating']), len(item['count']), len(item['enrollment']), len(item['level'])])): 
-            self.curr.execute('''INSERT INTO DB_NAME(title, partner, rating, rating_count, enrollment, level)
+            self.curr.execute('''INSERT INTO COURSES(title, partner, rating, rating_count, enrollment, level)
                 VALUES(?,?,?,?,?,?)''',(
                     item['title'][i], 
                     item['partner'][i], 
