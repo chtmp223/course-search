@@ -3,7 +3,7 @@
 
 # Created on 2020-03-22
 # Class: Course Getter Pipeline 
-# Comment: Specify pipelines for items
+# Comment: Create and store scraped data in SQLite database 
 # Documentation: https://docs.scrapy.org/en/latest/topics/item-pipeline.html
 
 import sqlite3
@@ -33,9 +33,9 @@ class CourseGetterPipeline(object):
         '''
         create and drop the table when appropriate
         '''
-        self.curr.execute('''DROP TABLE IF EXISTS coursera''')
+        self.curr.execute('''DROP TABLE IF EXISTS DB_NAME''')
         # change the field names when the Coursera page layout changes 
-        self.curr.execute('''CREATE TABLE IF NOT EXISTS coursera (
+        self.curr.execute('''CREATE TABLE IF NOT EXISTS DB_NAME (
                 id integer PRIMARY KEY AUTOINCREMENT,
                 title text,
                 partner text,
@@ -52,7 +52,7 @@ class CourseGetterPipeline(object):
         '''
         # change the field names when the page layout changes 
         for i in range(min([len(item['title']),len(item['partner']), len(item['rating']), len(item['count']), len(item['enrollment']), len(item['level'])])): 
-            self.curr.execute('''INSERT INTO coursera(title, partner, rating, rating_count, enrollment, level)
+            self.curr.execute('''INSERT INTO DB_NAME(title, partner, rating, rating_count, enrollment, level)
                 VALUES(?,?,?,?,?,?)''',(
                     item['title'][i], 
                     item['partner'][i], 

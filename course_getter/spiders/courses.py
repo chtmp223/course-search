@@ -7,22 +7,24 @@
 
 import scrapy
 import re
+import sys
 from ..items import CourseGetterItem
 
-# address of the coursera page to be scraped -- change when this page is broken 
-CRAWL_ADDRESS = ["https://www.coursera.org/courses?query=&indices%5Bprod_all_products_term_optimization%5D%5Bpage%5D=" + str(i)+ "&indices%5Bprod_all_products_term_optimization%5D%5Bconfigure%5D%5BclickAnalytics%5D=true&indices%5Bprod_all_products_term_optimization%5D%5Bconfigure%5D%5BruleContexts%5D%5B0%5D=en&indices%5Bprod_all_products_term_optimization%5D%5Bconfigure%5D%5BhitsPerPage%5D=10&configure%5BclickAnalytics%5D=true" for i in range(1,101)]
 
 class CoursesSpider(scrapy.Spider):
     name = 'courses'
 
-    def start_requests(self):
+    def __init__(self, address='', *args, **kwargs):
         '''
         start crawl requests to "https://www.coursera.org/courses"
         '''
-        self.index = 0
-        for url in CRAWL_ADDRESS:
-            # make a request to each url and call the parse function on the http response.
-            yield scrapy.Request(url=url, callback=self.parse)
+        # process the entered url
+        if address == '':
+            print("Custom url is not specified or invalid. System will use default url instead.")
+            self.start_urls = ["https://www.coursera.org/courses?query=&indices%5Bprod_all_products_term_optimization%5D%5Bpage%5D=" + str(i)+ "&indices%5Bprod_all_products_term_optimization%5D%5Bconfigure%5D%5BclickAnalytics%5D=true&indices%5Bprod_all_products_term_optimization%5D%5Bconfigure%5D%5BruleContexts%5D%5B0%5D=en&indices%5Bprod_all_products_term_optimization%5D%5Bconfigure%5D%5BhitsPerPage%5D=10&configure%5BclickAnalytics%5D=true" for i in range(1,101)]
+        else: 
+            self.start_urls = ['{!s}'.format(address)]
+        super(CoursesSpider, self).__init__(*args, **kwargs)
 
 
     def parse(self, response):
