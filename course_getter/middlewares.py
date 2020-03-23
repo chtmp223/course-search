@@ -1,9 +1,9 @@
+# !/usr/bin/python
 # -*- coding: utf-8 -*-
 
-# Define here the models for your spider middleware
-#
-# See documentation in:
-# https://docs.scrapy.org/en/latest/topics/spider-middleware.html
+# Created on 2020-03-22
+# Class: Course Getter Spider Middleware
+# Comment: Define the model for spider middleware
 
 from scrapy import signals
 

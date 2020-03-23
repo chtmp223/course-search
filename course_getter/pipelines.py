@@ -1,15 +1,22 @@
+# !/usr/bin/python
 # -*- coding: utf-8 -*-
 
-# Define your item pipelines here
-#
-# Don't forget to add your pipeline to the ITEM_PIPELINES setting
-# See: https://docs.scrapy.org/en/latest/topics/item-pipeline.html
+# Created on 2020-03-22
+# Class: Course Getter Pipeline 
+# Comment: Specify pipelines for items
+# Documentation: https://docs.scrapy.org/en/latest/topics/item-pipeline.html
 
 import sqlite3
+
+# specify the file name to store database table 
+DB_NAME = "coursera.db"
 
 class CourseGetterPipeline(object):
 
     def __init__(self):
+        '''
+        initialize connection and database table
+        '''
         self.create_connection()
         self.create_table()
     
@@ -18,7 +25,7 @@ class CourseGetterPipeline(object):
         '''
         establish connection to the database
         '''
-        self.conn = sqlite3.connect("coursera.db")
+        self.conn = sqlite3.connect(DB_NAME)
         self.curr = self.conn.cursor()
 
 
@@ -27,6 +34,7 @@ class CourseGetterPipeline(object):
         create and drop the table when appropriate
         '''
         self.curr.execute('''DROP TABLE IF EXISTS coursera''')
+        # change the field names when the Coursera page layout changes 
         self.curr.execute('''CREATE TABLE IF NOT EXISTS coursera (
                 id integer PRIMARY KEY AUTOINCREMENT,
                 title text,
@@ -42,6 +50,7 @@ class CourseGetterPipeline(object):
         '''
         insert courses into the database
         '''
+        # change the field names when the page layout changes 
         for i in range(min([len(item['title']),len(item['partner']), len(item['rating']), len(item['count']), len(item['enrollment']), len(item['level'])])): 
             self.curr.execute('''INSERT INTO coursera(title, partner, rating, rating_count, enrollment, level)
                 VALUES(?,?,?,?,?,?)''',(

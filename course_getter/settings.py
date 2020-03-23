@@ -1,22 +1,9 @@
 # !/usr/bin/python
 # -*- coding: utf-8 -*-
 
-"""
-Created on 2020-03-22
-Class: Scrapy Settings
-Comment:
-Scrapy settings for course_getter project
-@author: Chau Pham
-"""
-
-# Scrapy settings for course_getter project
-#
-# For simplicity, this file contains only settings considered important or
-# commonly used. You can find more settings consulting the documentation:
-#
-#     https://docs.scrapy.org/en/latest/topics/settings.html
-#     https://docs.scrapy.org/en/latest/topics/downloader-middleware.html
-#     https://docs.scrapy.org/en/latest/topics/spider-middleware.html
+# Created on 2020-03-22
+# Class: Scrapy Settings
+# Comment: Scrapy settings for course_getter project
 
 BOT_NAME = 'course_getter'
 

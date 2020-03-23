@@ -1,15 +1,17 @@
+# !/usr/bin/python
 # -*- coding: utf-8 -*-
 
-# Define here the models for your scraped items
-#
-# See documentation in:
-# https://docs.scrapy.org/en/latest/topics/items.html
+# Created on 2020-03-22
+# Class: Course Getter Item 
+# Define the model for the scraped item 
+# See documentation: https://docs.scrapy.org/en/latest/topics/items.html
 
 import scrapy
 
 class CourseGetterItem(scrapy.Item):
-    # define the fields for your item here like:
-    # name = scrapy.Field()
+    '''
+    define the fields for items - change when page layout changes 
+    '''
     title = scrapy.Field()
     partner = scrapy.Field()
     rating = scrapy.Field()
