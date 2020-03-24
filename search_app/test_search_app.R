@@ -1,8 +1,11 @@
 #!/usr/bin/env Rscript
-source('./search_app.R')
+source('./helper_fct.R')
 
 if (!require("testthat"))
   install.packages("testthat")
+
+if (!require("covr"))
+  install.packages("covr")
 
 test_that("Create Corpus", {
   courses_db <- data.frame(title = c("hello", "test"))
