@@ -1,26 +1,46 @@
+# !/usr/bin/python
+# -*- coding: utf-8 -*-
+
+# Created on 2020-03-24
+# Class: Spider Test
+# Comment: Unit testing for parse function of spider
+
 import unittest
 from course_getter.spiders import courses
-from responses import fake_response_from_file
+from responses.response import fake_response
 
 class SpiderTest(unittest.TestCase):
+    '''
+    Unit testing for parse function of spider
+    '''
 
     def setUp(self):
         '''
-        set up spider
+        Set up spider
+
+        Arg: 
+            self: instance of the class 
         '''
         self.spider = courses.CoursesSpider()
 
-    def _test_item_results(self, results, expected_length):
-        count = 0
-        permalinks = set()
-        for item in results:
-            self.assertIsNotNone(item['content'])
-            self.assertIsNotNone(item['title'])
-        self.assertEqual(count, expected_length)
 
     def test_parse(self):
-        results = self.spider.parse(fake_response_from_file('osdir/sample.html'))
-        self._test_item_results(results, 10)
+        '''
+        Test the length of the parsed field with fake response file 
+
+        Arg: 
+            self: instance of the class 
+        '''
+        response = fake_response('courses.html')
+        results = self.spider.parse(response)
+
+        for field in results:
+            self.assertEqual(len(field['title']), 10)
+            self.assertEqual(len(field['partner']), 10)
+            self.assertEqual(len(field['rating']), 10)
+            self.assertEqual(len(field['count']), 10)
+            self.assertEqual(len(field['enrollment']), 10)
+            self.assertEqual(len(field['level']), 10)
 
 if __name__ == "__main__":
     unittest.main()
