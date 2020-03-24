@@ -60,9 +60,10 @@ CreateCorpus <- function(query, dataset) {
 #' Calculate weight per term ----
 #'
 #' @param tfidf_row A string
+#' @param title_list A vector containing all the titles
 #' @return Weight of each term
 #' @example
-#' WeightTerm("fundamental")
+#' WeightTerm("fundamental", c("hello", "test"))
 WeightTerm <- function(tfidf_row, title_list) {
   term_df <- sum(tfidf_row[1:length(title_list)] > 0)
   weight <- rep(0, length(tfidf_row))
@@ -73,9 +74,10 @@ WeightTerm <- function(tfidf_row, title_list) {
 #' Calculate TF-IDF ----
 #'
 #' @param corpus A corpus
+#' @param title_list A vector containing all the titles
 #' @return A TF-IDF matrix
 #' @example
-#' TfIdf(corpus)
+#' TfIdf(corpus, c("hello", "test"))
 TfIdf <- function(corpus, title_list) {
   
   # Create term-title matrix
@@ -92,9 +94,10 @@ TfIdf <- function(corpus, title_list) {
 #' Calculate the title scores ----
 #'
 #' @param tfidf_matrix A matrix
+#' @param title_list A vector containing all the titles
 #' @return a dataframe containing score for each title
 #' @example
-#' TitleScore(matrix)
+#' TitleScore(matrix, c(c("hello", "test")))
 TitleScore <- function(tfidf_matrix, title_list) {
   
   # Separate query and titles
