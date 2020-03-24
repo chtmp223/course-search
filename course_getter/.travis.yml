@@ -1,0 +1,33 @@
+language: python
+dist: xenial
+sudo: required
+group: edge
+addons:
+  apt:
+    sources:
+      - travis-ci/sqlite3
+    packages:
+      - sqlite3
+services:
+  - sqlite
+
+matrix:
+  include:
+    - os: linux
+      python: 3.8.2
+      before_install:
+        - node --version
+        - npm --version
+      install:
+        - pip install -r requirements.txt
+        - pip install coverage
+        - npm install
+      before_script:
+        - curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 > ./cc-test-reporter
+        - chmod +x ./cc-test-reporter
+        - ./cc-test-reporter before-build
+      script:
+        - coverage run --omit *virtualenv* --omit *site-packages* --omit *lib* test.py test -v 2 --exclude-tag=selenium
+      after_script:
+        - coverage xml
+        - if [[ "$TRAVIS_PULL_REQUEST" == "false" ]]; then ./cc-test-reporter after-build --exit-code $TRAVIS_TEST_RESULT; fi
