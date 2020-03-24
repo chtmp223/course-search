@@ -26,4 +26,13 @@ test_that("TFIDF", {
   expect_equal(tfidf_mat[,2][['test']], 1)
 })
 
+test_that("Score Matrix", {
+  courses_db <- data.frame(title = c("hello", "test"))
+  corpus <- suppressWarnings(CreateCorpus("fundamentals", courses_db))
+  title_list <- c('hello', 'test')
+  tfidf_mat <- TfIdf(corpus, title_list)
+  score_mat <- TitleScore(tfidf_mat, title_list)
+  expect_equal(length(score_mat$title), length(title_list))
+})
+
 
