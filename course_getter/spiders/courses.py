@@ -32,7 +32,7 @@ class CoursesSpider(scrapy.Spider):
         else: 
             self.start_urls = ['{!s}'.format(address)]
         super(CoursesSpider, self).__init__(*args, **kwargs)
-
+        
 
     def parse(self, response):
         '''
