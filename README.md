@@ -22,17 +22,15 @@ A demo of the web app can be found at
 
 **Project Structure**
 ----
-- Used Scrapy to scrape courses data (course_getter) from https://www.coursera.org/courses/ and stored the result in a SQLite database (coursera.db)
-- Built an RShiny web app (stored in folder course-search) to get the user's query and return ranked results (using TF-IDF weighting scheme on the database). 
+1. 
+
 
  **Usage**
  ----
  1. Install packages: 
-    `pip install -r requirements.txt`
- 2. On your terminal, cd to Course-Search/course-search/
- 3. Type "scrapy crawl courses" to scrape https://www.coursera.org/courses/ (update coursera.db file).
- 4. Open both ui.R and server.R in R-Studio, hit the 'Run' button on the top right of the code. 
- 5. When you're in the app, enter a keyword, adjust result length and hit search.  
+    `$ pip install -r requirements.txt`
+ 2. Run `$ sh process.sh`
+ 3. Click on the localhost link (For example: `http://127.0.0.1:5893`)
 
 **Discussion**
  ----

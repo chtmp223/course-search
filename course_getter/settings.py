@@ -14,7 +14,7 @@ NEWSPIDER_MODULE = 'course_getter.spiders'
 ROBOTSTXT_OBEY = True
 
 DB_SETTINGS = {
-    'db':"coursera.db"
+    'db':"search_app/coursera.db"
 }
 ITEM_PIPELINES = {
     'course_getter.pipelines.CourseGetterPipeline': 300,
