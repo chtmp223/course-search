@@ -7,7 +7,7 @@
 #' 
 
 # Import functions from helper_fct.R
-source('./helper_fct.R')
+source('search_app/helper_fct.R')
 
 # Set up libraries
 if (!require("testthat"))
