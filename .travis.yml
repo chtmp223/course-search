@@ -4,7 +4,7 @@ r: 3.6.1
 cache:
   # Main R library
   packages: true
-  
+
 r_github_packages: r-lib/testthat
 
 r_packages: 
@@ -19,4 +19,4 @@ r_packages:
   - shinyBS
 
 script: 
-  R -f test_search_app.R
+  R -f search_app/test_search_app.R
