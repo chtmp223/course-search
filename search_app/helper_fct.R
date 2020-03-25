@@ -1,6 +1,6 @@
 #!/usr/bin/env Rscript
 
-#' Helper functions for Rshiny app 
+#' Helper functions for server.R 
 #'
 #' @description
 #' Helper functions for backend of an RShiny app that allows user 

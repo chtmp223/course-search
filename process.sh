@@ -11,7 +11,7 @@ scrapy crawl courses
 # Scrape courses from a custom page in Coursera (uncomment and change address to use)
 #scrapy crawl courses -a address=https://www.coursera.org/courses
 
-# run RShiny app for all available database files in the folder
+# run RShiny app for each available database file in the folder
 FILES=`ls search_app/*.db`
 for file in $FILES
 do
