@@ -17,6 +17,11 @@ r_packages:
   - tidytext
   - tm
   - shinyBS
+  - covr
+  - devtools
 
 script: 
   R -f search_app/test_search_app.R
+
+after_success:
+  Rscript -e 'library(covr);codecov()'

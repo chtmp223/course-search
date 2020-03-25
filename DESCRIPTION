@@ -15,5 +15,7 @@ Imports:
   tidytext,
   tm,
   shinyBS
+
 Suggests:
-  shinytest
+  shinytest,
+  covr
