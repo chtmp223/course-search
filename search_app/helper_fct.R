@@ -10,12 +10,14 @@
 #' * `TfIdf()` creates a TF-IDF matrix
 #' * `TitleScore()` calculates the score for each title
 
+# Set up libraries ----
 if (!require("dplyr"))
   install.packages("dplyr")
 if (!require("tidytext"))
   install.packages("tidytext")
 if (!require("tm"))
   install.packages("tm")
+
 #--------------------------------------------
 #---------     Helper Functions    ----------
 #--------------------------------------------
