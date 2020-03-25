@@ -1,11 +1,17 @@
-language: python
-python: 
-  - "stable"
+language: r
+r: 
+  - oldrel
+  - release
+  - devel
 
-test:
-  adapter: sqlite3
-  database: ":memory:"
-  timeout: 500
-  
-install: pip install -r requirements.txt
-script: python3 test_spider.py
+r_github_packages: r-lib/testthat
+r_packages: 
+  - shiny
+  - shinyjs
+  - RSQLite
+  - DBI
+  - shinythemes
+  - dplyr
+  - tidytext
+  - tm
+  - shinyBS
