@@ -22,30 +22,30 @@ Coursera Search is a system that allows user to perform course search based on t
 
 **Project Structure**
 ----
-1. course_getter: contains Scrapy project 
-   a. spiders: 
-      - courses.py: Initiate HTTP requests, specify fields to be scraped
-   b. items.py: Define the model for scraped items
-   c. middlewares.py: Define the model for spider middleware
-   d. pipelines.py: Create and store scraped data in SQLite database 
-   e. settings.py: Scrapy settings for course_getter project
-2. responses: 
-   a. courses.html: Manually downloaded from https://www.coursera.org/, used to 
-                     create fake HTML responses for unit testing 
-   b. response.py: Create a Scrapy fake HTTP response from a HTML file
-3. search_app: 
-   a. tests: Generated snapshot testing scripts for RShiny app 
-   b. covr.R: Report test coverage for unit testing of helper functions (test_search_app.R)
-   c. helper_fct.R: Helper functions for Rshiny app 
-   d. server.R: Server class of RShiny App 
-   e. test_search_app.R: Unit Test script for helper_fct.R
-   f. ui.R: UI class of RShiny App 
-4. .travis.yml: Script for Travis CI test.
-5. DESCRIPTION: Required packages for the system to execute.
-6. process.sh: Script to automate the project
-7. requirements.txt: Required packages for the system to execute.
-8. scrapy.cfg: Config file for Scrapy project
-9. test_spider.py: Unit testing script for Scrapy spider
+1. course_getter: contains Scrapy project<br />
+   a/ spiders:<br /> 
+      courses.py: Initiate HTTP requests, specify fields to be scraped<br />
+   b/ items.py: Define the model for scraped items<br />
+   c/ middlewares.py: Define the model for spider middleware<br />
+   d/ pipelines.py: Create and store scraped data in SQLite database<br />
+   e/ settings.py: Scrapy settings for course_getter project<br />
+2. responses:<br />
+   a/ courses.html: Manually downloaded from https://www.coursera.org/, used to 
+                     create fake HTML responses for unit testing<br />
+   b/ response.py: Create a Scrapy fake HTTP response from a HTML file<br />
+3. search_app:<br /> 
+   a/ tests: Generated snapshot testing scripts for RShiny app <br />
+   b/ covr.R: Report test coverage for unit testing of helper functions (test_search_app.R)<br />
+   c/ helper_fct.R: Helper functions for Rshiny app<br /> 
+   d/ server.R: Server class of RShiny App <br />
+   e/ test_search_app.R: Unit Test script for helper_fct.R<br />
+   f/ ui.R: UI class of RShiny App <br />
+4. .travis.yml: Script for Travis CI test.<br />
+5. DESCRIPTION: Required packages for the system to execute.<br />
+6. process.sh: Script to automate the project<br />
+7. requirements.txt: Required packages for the system to execute.<br />
+8. scrapy.cfg: Config file for Scrapy project<br />
+9. test_spider.py: Unit testing script for Scrapy spider<br />
 
 
 **Usage**
@@ -56,7 +56,7 @@ Coursera Search is a system that allows user to perform course search based on t
 3. Click on the localhost link (For example: `http://127.0.0.1:5893`) to access the web app 
 
 
-**Future work**
+**Future Work**
 ----
 1. This app only allows the user to enter one keyword. 
 - Proposal: update CreateCorpus() & TitleScore() in helper_fct.R such that it treates query as a list instead of a single character. 
